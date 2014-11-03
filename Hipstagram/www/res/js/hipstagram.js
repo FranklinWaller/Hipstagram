@@ -26,7 +26,14 @@
     	},
 
 		camera: function(){
-			navigator.camera.getPicture(onSuccess, onFail, {});
+			navigator.camera.getPicture(onSuccess, onFail, {
+				quality : 40,
+			    allowEdit : false,
+			    encodingType : navigator.camera.EncodingType.JPEG, 
+			    sourceType : navigator.camera.PictureSourceType.CAMERA,
+			    targetWidth : 512,
+			    targetHeight : 512
+			});
 		},
 
 		editor: {
@@ -36,9 +43,14 @@
 				image.src = imageURI;
 			},
 
-			setFilter: function(){
+			setFilter: function(filterName, filterValue){
 				var image = document.getElementById('myImage');
-				image.style["-webkit-filter"] = "sepia(1)";
+				if(filterName != 'none'){
+					image.style["-webkit-filter"] =  filterName + "(" + filterValue + ")";
+				}else{
+					image.style["-webkit-filter"] =  filterName;
+				}
+				
 			}
 		}
 	};
