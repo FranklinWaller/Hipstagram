@@ -1,0 +1,4 @@
+.cameraImg {
+	width: 100%;
+	-webkit-filter: grayscale(1) opacity(0.9);
+}

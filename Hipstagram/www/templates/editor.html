@@ -6,36 +6,31 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" href="res/css/playui.css">
-        <link rel="stylesheet" href="res/css/hipstagram.css">
+        <link rel="stylesheet" href="../res/css/playui.css">
+        <link rel="stylesheet" href="../res/css/hipstagram.css">
         <title>Hipstagram</title>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="res/js/playui.js"></script>
-        <script type="text/javascript" src="res/js/hipstagram.js"></script>
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../res/js/playui.js"></script>
+        <script type="text/javascript" src="../res/js/hipstagram.js"></script>
     </head>
     <body>
         <header class="play-header">
-            <h1>Hipstagram</h1>
+            <a href="../index.html" sty;e="float:left;">Back</a>
+            <h1>Hipstagram - Editor</h1>
         </header>
         <div class="play-content">
-            <img src="http://placehold.it/1200x1200" id='myImage' width="" class="cameraImg"/>
+            <img src="#" id='myImage' width="" class="cameraImg"/>
         </div>
         <footer class="play-tabbar">
             <div class="play-tabs">
-                <a href="#">
-                    My Photos
-                </a>
-                <a href="#" onclick="hipsta.camera()">
-                    Camera
-                </a>
-                <a href="#">
-                    Store
+                <a href="#" onclick="hipsta.editor.setFilter()">
+                    Set Sepia
                 </a>
             </div>
-        </footer>
-        
+        </footer>        
         <script>
             hipsta.init();
+            hipsta.editor.applyImage();
         </script>
     </body>
 </html>
