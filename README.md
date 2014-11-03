@@ -1,4 +1,4 @@
-Hipstogram
+Hipstagram
 ==========
 
-Turn yourself into an hipster with hipstogram
+Turn yourself into an hipster with hipstagram
