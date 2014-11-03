@@ -1,73 +1,99 @@
+var hipsta = {
 
+	init: function(){
+		this.bindEvents();
+	},
 
-	var hipsta = {
+	bindEvents: function(){
+		document.addEventListener('deviceready', this.onDeviceReady, false);
+	},
 
-		init: function(){
-			this.bindEvents();
-		},
+	onDeviceReady: function() {
+    	app.receivedEvent('deviceready');				
+	},
 
-		bindEvents: function(){
-			document.addEventListener('deviceready', this.onDeviceReady, false);
-		},
+	receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
 
-		onDeviceReady: function() {
-        	app.receivedEvent('deviceready');				
-    	},
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
 
-    	receivedEvent: function(id) {
-	        var parentElement = document.getElementById(id);
-	        var listeningElement = parentElement.querySelector('.listening');
-	        var receivedElement = parentElement.querySelector('.received');
+        console.log('Received Event: ' + id);
+	},
 
-	        listeningElement.setAttribute('style', 'display:none;');
-	        receivedElement.setAttribute('style', 'display:block;');
+	camera: function(){
+		//Fire up the camera!
+		navigator.camera.getPicture(onSuccess, onFail, {
+			destinationType: Camera.DestinationType.DATA_URL,
+		    targetWidth : 512,
+		    targetHeight : 512
+		});
+	},
 
-	        console.log('Received Event: ' + id);
-    	},
+	allImages: {
+		getAll: function(){
+			var myPhotos = document.getElementById('myPhotos');
 
-		camera: function(){
-			navigator.camera.getPicture(onSuccess, onFail, {
-				quality : 40,
-			    allowEdit : false,
-			    encodingType : navigator.camera.EncodingType.JPEG, 
-			    sourceType : navigator.camera.PictureSourceType.CAMERA,
-			    targetWidth : 512,
-			    targetHeight : 512
-			});
-		},
+			var imageCount = localStorage.getItem('imageCount');
 
-		editor: {
-			applyImage: function(){
-				var imageURI = localStorage.getItem('image');
-				var image = document.getElementById('myImage');
-				image.src = imageURI;
-			},
+			if(imageCount !== null){
 
-			setFilter: function(filterName, filterValue){
-				var image = document.getElementById('myImage');
-				if(filterName != 'none'){
-					image.style["-webkit-filter"] =  filterName + "(" + filterValue + ")";
-				}else{
-					image.style["-webkit-filter"] =  filterName;
-				}
-				
+				var imagesHTML = '';
+
+				for (var i = imageCount; i >= 0; i--) {
+					var image = localStorage.getItem('image' + i);
+					imagesHTML += '<img src="data:image/jpeg;base64,' + image + '">';
+				};
+
+				myPhotos.innerHTML = imagesHTML;
 			}
 		}
-	};
+	},
 
-	var private = {
+	editor: {
+		applyImage: function(){
+			var imageCount = localStorage.getItem('imageCount');
+			var imageURI = localStorage.getItem('image' + imageCount);
+			var image = document.getElementById('myImage');
 
-	};
+			//iOS can't get normal URI's so base64 is better
+			image.src = "data:image/jpeg;base64," + imageURI;
+		},
 
-	function onSuccess(imageURI) {
-		//var image = document.getElementById('myImage');
-		localStorage.setItem('image', imageURI);
-		window.location.href = "templates/editor.html";
-		//image.src = imageURI;
+		setFilter: function(filterName, filterValue){
+			var image = document.getElementById('myImage');
+
+			if(filterName != 'none'){
+				image.style["-webkit-filter"] =  filterName + "(" + filterValue + ")";
+			}else{
+				image.style["-webkit-filter"] =  filterName;
+			}
+			
+		}
+	}
+};
+
+function onSuccess(imageURI) {
+	//Get the amount of images taken with Hipstagram.
+	var imageCount = localStorage.getItem('imageCount');
+
+	//First image
+	if(imageCount === null){
+		imageCount = 0;
 	}
 
-	function onFail(message) {
-		alert('Failed because: ' + message);
-	}
-	
+	imageCount++;
 
+	//Keep track of all the images
+	localStorage.setItem('image' + imageCount, imageURI);
+	localStorage.setItem('imageCount', imageCount);
+
+	//All set lets edit it.
+	window.location.href = "templates/editor.html";
+}
+
+function onFail(message) {
+	alert('Failed because: ' + message);
+}
