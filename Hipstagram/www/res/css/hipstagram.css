@@ -4,7 +4,13 @@
 	-webkit-filter: grayscale(1) opacity(0.9);
 }
 
+.play-card img {
+    max-width: 90%;
+    max-width: 90%;
+    padding:5%;
+}
+
 /* iOS only */
 .play-init {
-	padding-top: 20px;
+	/*padding-top: 20px;*/
 }

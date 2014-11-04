@@ -1,48 +1,22 @@
-<!DOCTYPE html>
-<html class="play-init">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" href="../res/css/playui.css">
-        <link rel="stylesheet" href="../res/css/hipstagram.css">
-        <title>Hipstagram</title>
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script type="text/javascript" src="../res/js/playui.js"></script>
-        <script type="text/javascript" src="../res/js/hipstagram.js"></script>
-    </head>
-    <body>
-        <header class="play-header">
-            <a href="../index.html" sty;e="float:left;">Back</a>
-            <h1>Hipstagram - Editor</h1>
-        </header>
-        <div class="play-content">
-            <img src="#" id='myImage' width="" class="cameraImg"/>
-        </div>
-        <footer class="play-tabbar">
-            <div class="play-tabs">
-                <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('sepia', '1')">
-                    Sepia
-                </a>
-                <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('invert', '1')">
-                    Invert
-                </a>
-                <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('grayscale', '1')">
-                    GrayScale
-                </a>
-                <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('blur', '3px')">
-                    Blur
-                </a>
-                <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('none', '1')">
-                    Reset
-                </a>
-            </div>
-        </footer>        
-        <script>
-            hipsta.init();
-            hipsta.editor.applyImage();
-        </script>
-    </body>
-</html>
+<div id='header' style='display:none;'>
+    <a href='#' onclick='window.location.href="/"' class='play-left'>Back</a>
+    <h1>Hipstagram - Editor</h1>
+</div>
+<img id='myImage'>
+<div id='tabs' style='display:none'>
+    <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('sepia', '1')">
+        Sepia
+    </a>
+    <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('invert', '1')">
+        Invert
+    </a>
+    <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('grayscale', '1')">
+        GrayScale
+    </a>
+    <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('blur', '3px')">
+        Blur
+    </a>
+    <a href="javascript:void(0)" onclick="hipsta.editor.setFilter('none', '1')">
+        Reset
+    </a>
+</div>
