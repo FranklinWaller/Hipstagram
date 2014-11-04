@@ -36,7 +36,7 @@ var hipsta = {
 
                 var imagesHTML = '';
 
-                for (var i = imageCount; i >= 0; i--) {
+                for (var i = imageCount; i >= 1; i--) {
                     var image = localStorage.getItem('image' + i);
                     imagesHTML += '<div class="play-card"><img src="data:image/jpeg;base64,' + image + '"></div>';
                 }
