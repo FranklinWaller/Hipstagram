@@ -38,7 +38,7 @@ var hipsta = {
 
                 for (var i = imageCount; i >= 1; i--) {
                     var image = localStorage.getItem('image' + i);
-                    imagesHTML += '<div class="play-card"><img src="data:image/jpeg;base64,' + image + '"></div>';
+                    imagesHTML += '<div class="play-card"><img src="' + image + '"></div>';
                 }
                 ;
 
@@ -58,7 +58,7 @@ var hipsta = {
             image.src = "data:image/jpeg;base64," + imageURI;
         },
         setFilter: function(filterName, filterValue) {
-            var image = document.getElementById('myImage');
+            var image = document.getElementById('imgWrapper');
 
             if (filterName != 'none') {
                 image.style["-webkit-filter"] = filterName + "(" + filterValue + ")";
@@ -66,6 +66,46 @@ var hipsta = {
                 image.style["-webkit-filter"] = filterName;
             }
 
+        },
+
+        spawnMustache: function(name){
+
+            var mustache = $("<img class='dynamic' style='display:none;'>");
+            mustache.attr('src', 'res/img/assets/snorren/' + name + '.png');
+            mustache.appendTo('#imgWrapper');
+
+            mustache.pep({
+                constrainTo: 'parent'
+            });
+
+            mustache.show();
+
+            /*
+            $("#snor1").pep({
+                constrainTo: 'parent'
+            });
+
+            $("#snor1").show();
+            */
+        },
+
+        save: function(){
+            html2canvas($("#imgWrapper"), {
+                onrendered: function(canvas) {
+                    // canvas is the final rendered <canvas> element
+                    var image = document.getElementById('imgWrapper');
+
+
+                    var imageURI = canvas.toDataURL("image/png");
+                    
+                    var imageCount = localStorage.getItem('imageCount');
+                    //image.src = "data:image/jpeg;base64," + imageURI;
+                    localStorage.setItem('image' + imageCount, imageURI);
+                    alert('Done');
+                    console.log(localStorage.getItem('image' + imageCount));
+                    //window.open(myImage);
+                }
+            });
         }
     }
 };

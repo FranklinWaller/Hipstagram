@@ -20,6 +20,20 @@ phase.controller('EditorController', function() {
     currentTabs.innerHTML = newTabs.innerHTML;
     currentHeader.innerHTML = newHeader.innerHTML;
     hipsta.editor.applyImage();
+    //End init
+
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var img = document.getElementById('myImage');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var img = document.getElementById('myImage');
+    img.onload = function(){
+        context.drawImage(img, 0, 0);
+    };
+    
+
 });
 
 phase.controller('AllImagesController', function(){

@@ -14,3 +14,22 @@
 .play-init {
 	/*padding-top: 20px;*/
 }
+
+.sub-menu {
+	position: fixed;
+	left:0px;
+	bottom: 51px;
+	height: 50px;
+	width: 100%;
+	background-color: #f7f5f5;
+	border-top: 1px solid #d3d3d3;
+}
+
+	.sub-menu .subs {
+		margin-top: 20px;
+		width: 100$;
+	}
+
+		.sub-menu .subs a {
+			float:left;
+		}
