@@ -90,8 +90,16 @@ var hipsta = {
             mustache.attr('src', 'res/img/assets/snorren/' + name + '.png');
             mustache.appendTo('#imgWrapper');
 
-            mustache.pep({
+            /*mustache.pep({
                 constrainTo: 'parent'
+            });
+            */
+           
+            mustache.TouchBox({
+                resize:true,
+                drag:true,
+                rotate: true,
+                grid_drag:1
             });
 
             mustache.show();
