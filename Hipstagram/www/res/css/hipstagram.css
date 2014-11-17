@@ -52,3 +52,8 @@
 .play-header {
 	background-color:#594848;
 }
+
+.dynamic {
+    width: 512px;
+    height: 512px;
+}
