@@ -57,7 +57,7 @@ var hipsta = {
 
                 for(var i = 1; i < 13; i++){
                     list += '<a href="javascript:void(0)" onclick="hipsta.editor.spawnMustache(\'snor-' + i + '\')">';
-                    list += '<img width= src="res/img/assets/snorren/snor-' + i + '.png"/>';
+                    list += '<img width="100" src="/res/img/assets/snorren/snor-' + i + '.png"/>';
                     list += '</a>';
                 }
 
