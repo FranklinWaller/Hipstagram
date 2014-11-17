@@ -17,7 +17,7 @@ phase.controller('EditorController', function() {
     var currentTabs = body.getElementsByClassName('play-tabs')[0];
     var currentHeader = body.getElementsByClassName('play-header')[0];
     
-    currentTabs.innerHTML = newTabs.innerHTML;
+    currentTabs.innerHTML = hipsta.editor.list.generateMustache();
     currentHeader.innerHTML = newHeader.innerHTML;
     hipsta.editor.applyImage();
     //End init
@@ -29,11 +29,12 @@ phase.controller('EditorController', function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     var img = document.getElementById('myImage');
+
+
+
     img.onload = function(){
         context.drawImage(img, 0, 0);
     };
-    
-
 });
 
 phase.controller('AllImagesController', function(){
