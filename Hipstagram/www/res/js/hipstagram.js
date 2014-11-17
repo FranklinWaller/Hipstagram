@@ -49,6 +49,20 @@ var hipsta = {
         }
     },
     editor: {
+
+        list: {
+            generateMustache: function(){
+                var list = '';
+            
+
+                for(var i = 1; i < 13; i++){
+                    list += '<a href="javascript:void(0)" onclick="hipsta.editor.spawnMustache(\'snor-' + i + '\')">Spawn mustache ' + i + '</a>';
+                }
+
+                return list;
+            }
+        },
+
         applyImage: function() {
             var imageCount = localStorage.getItem('imageCount');
             var imageURI = localStorage.getItem('image' + imageCount);
@@ -79,14 +93,6 @@ var hipsta = {
             });
 
             mustache.show();
-
-            /*
-            $("#snor1").pep({
-                constrainTo: 'parent'
-            });
-
-            $("#snor1").show();
-            */
         },
 
         save: function(){

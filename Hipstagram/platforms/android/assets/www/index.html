@@ -8,9 +8,16 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" href="res/css/playui.css">
         <link rel="stylesheet" href="res/css/hipstagram.css">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <title>Hipstagram</title>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="res/js/jquery.min.js"></script>
+        <script type="text/javascript" src="res/js/jquery.pep.js"></script>
+        <script type="text/javascript" src="res/js/html2canvas.js"></script>
         <script type="text/javascript" src="res/js/playui.js"></script>
+        <script src='res/js/phase.js'></script>
+        <script src='res/js/app.js'></script>
         <script type="text/javascript" src="res/js/hipstagram.js"></script>
     </head>
     <body>
@@ -18,24 +25,30 @@
             <h1>Hipstagram</h1>
         </header>
         <div class="play-content">
-            <img src="http://placehold.it/1200x1200" id='myImage' width="" class="cameraImg"/>
+            <h2>Welcome to Hipstagram</h2>
+            <p></p>
+            <p>
+                Always wanted to become a hipster? Now is your chance!<br>
+                
+            </p>
         </div>
         <footer class="play-tabbar">
-            <div class="play-tabs">
-                <a href="#">
-                    My Photos
+            <div class="play-tabs play-image-only">
+                <a href="#all">
+                    <img src='res/img/11.png'>
                 </a>
-                <a href="#" onclick="hipsta.camera()">
-                    Camera
+                <a href="#" onclick='hipsta.camera()'>
+                    <img src='res/img/113.png'>
                 </a>
                 <a href="#">
-                    Store
+                    <img src='res/img/451.png'>
                 </a>
             </div>
         </footer>
         
         <script>
             hipsta.init();
+            phase.run(document.getElementsByClassName('play-content')[0]);
         </script>
     </body>
 </html>
