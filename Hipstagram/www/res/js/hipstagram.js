@@ -86,7 +86,7 @@ var hipsta = {
 
         spawnMustache: function(name){
 
-            var mustache = $("<img class='dynamic' style='display:none;'>");
+            var mustache = $("<img class='dynamic' style='display:none;' width='512' height='512'>");
             mustache.attr('src', 'res/img/assets/snorren/' + name + '.png');
             mustache.appendTo('#imgWrapper');
 
