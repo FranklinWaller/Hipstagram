@@ -57,7 +57,7 @@ var hipsta = {
 
                 for(var i = 1; i < 13; i++){
                     list += '<a href="javascript:void(0)" onclick="hipsta.editor.spawnMustache(\'snor-' + i + '\')">';
-                    list += '<img width="100" src="/res/img/assets/snorren/snor-' + i + '.png"/>';
+                    list += '<img width="100" src="/res/img/assets/snorren/snor-' + i + '.svg"/>';
                     list += '</a>';
                 }
 
@@ -87,7 +87,7 @@ var hipsta = {
         spawnMustache: function(name){
 
             var mustache = $("<img class='dynamic' style='display:none;' width='512' height='512'>");
-            mustache.attr('src', 'res/img/assets/snorren/' + name + '.png');
+            mustache.attr('src', 'res/img/assets/snorren/' + name + '.svg');
             mustache.appendTo('#imgWrapper');
 
             /*mustache.pep({
