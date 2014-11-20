@@ -1,4 +1,4 @@
-phase.routes({
+cphase.routes({
     "edit": {
         url: 'templates/editor.html',
         controller: 'EditorController'
@@ -12,12 +12,14 @@ phase.routes({
 
 phase.controller('EditorController', function() {
     var body = phase.getContainer().parentNode;
-    var newTabs = document.getElementById('tabs');
+    var newTabs = document.getElementById('temp-sub');
     var newHeader = document.getElementById('header');
     var currentTabs = body.getElementsByClassName('play-tabs')[0];
+    var editorTabMenu = document.getElementById('temp-sub');
     var currentHeader = body.getElementsByClassName('play-header')[0];
     
-    currentTabs.innerHTML = hipsta.editor.list.generateMustache();
+    currentTabs.innerHTML = newTabs.innerHTML;
+    editorTabMenu.innerHTML = hipsta.editor.list.generateMustache();
     currentHeader.innerHTML = newHeader.innerHTML;
     hipsta.editor.applyImage();
     //End init
@@ -30,7 +32,9 @@ phase.controller('EditorController', function() {
     canvas.height = window.innerHeight;
     var img = document.getElementById('myImage');
 
-
+    var windowHeight = window.height;
+    var imageHeight = windowHeight - 45 - 51 - 141;
+    img.style.height = imageHeight + "px";
 
     img.onload = function(){
         context.drawImage(img, 0, 0);
