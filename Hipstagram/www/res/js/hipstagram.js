@@ -57,7 +57,7 @@ var hipsta = {
 
                 for(var i = 1; i < 13; i++){
                     list += '<a href="javascript:void(0)" onclick="hipsta.editor.spawnMustache(\'snor-' + i + '\')">';
-                    list += '<img width="100" src="/res/img/assets/snorren/snor-' + i + '.svg"/>';
+                    list += '<img src="res/img/assets/snorren/snor-' + i + '.svg" width="100" height="100"/>';
                     list += '</a>';
                 }
 
@@ -66,8 +66,7 @@ var hipsta = {
         },
 
         applyImage: function() {
-            var imageCount = localStorage.getItem('imageCount');
-            var imageURI = localStorage.getItem('image' + imageCount);
+            var imageURI = localStorage.getItem('temp');
             var image = document.getElementById('myImage');
 
             //iOS can't get normal URI's so base64 is better
@@ -86,7 +85,7 @@ var hipsta = {
 
         spawnMustache: function(name){
 
-            var mustache = $("<img class='dynamic' style='display:none;' width='512' height='512'>");
+            var mustache = $("<img class='dynamic' style='display:none; width:200px; height:100px;'>");
             mustache.attr('src', 'res/img/assets/snorren/' + name + '.svg');
             mustache.appendTo('#imgWrapper');
 
@@ -111,6 +110,16 @@ var hipsta = {
                     // canvas is the final rendered <canvas> element
                     var image = document.getElementById('imgWrapper');
 
+					var imageCount = localStorage.getItem('imageCount');
+
+					//First image
+					if (imageCount === null) {
+						imageCount = 0;
+					}
+
+					imageCount++;
+					
+					localStorage.setItem('imageCount', imageCount);
 
                     var imageURI = canvas.toDataURL("image/png");
                     
@@ -118,7 +127,6 @@ var hipsta = {
                     //image.src = "data:image/jpeg;base64," + imageURI;
                     localStorage.setItem('image' + imageCount, imageURI);
                     alert('Done');
-                    console.log(localStorage.getItem('image' + imageCount));
                     //window.open(myImage);
                 }
             });
@@ -138,8 +146,8 @@ function onSuccess(imageURI) {
     imageCount++;
 
     //Keep track of all the images
-    localStorage.setItem('image' + imageCount, imageURI);
-    localStorage.setItem('imageCount', imageCount);
+    localStorage.setItem('temp', imageURI);
+    //localStorage.setItem('imageCount', imageCount);
 
     //All set lets edit it.
     window.location.hash = "#edit";
