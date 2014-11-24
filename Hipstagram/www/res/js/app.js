@@ -1,4 +1,4 @@
-cphase.routes({
+phase.routes({
     "edit": {
         url: 'templates/editor.html',
         controller: 'EditorController'

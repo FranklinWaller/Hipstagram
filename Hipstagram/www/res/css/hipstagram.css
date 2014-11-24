@@ -1,7 +1,10 @@
-.cameraImg {
+body {
+	overflow-x: hidden;
+}
+
+#myImage {
 	width: 100%;
-	height: 100%;
-	-webkit-filter: grayscale(1) opacity(0.9);
+	max-height:100%;
 }
 
 .play-card img {
@@ -19,7 +22,7 @@
 	position: fixed;
 	left:0px;
 	bottom: 51px;
-	height: 140px;
+	height: 75px;
 	width: 100%;
 	background-color: #594848;
 	border-top: 1px solid #d3d3d3;
@@ -32,10 +35,12 @@
 		overflow-x:scroll;
 		white-space: nowrap;
 	}
-
 		.sub-menu .subs a {
 			padding-left:15px;
 		}
+			.sub-menu .subs a img {
+				height:30px;
+			}
 .subs-slider {
 	list-style-type:none;
 	text-align:center;

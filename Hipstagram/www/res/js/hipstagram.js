@@ -22,6 +22,7 @@ var hipsta = {
         //Fire up the camera!
         navigator.camera.getPicture(onSuccess, onFail, {
             destinationType: Camera.DestinationType.DATA_URL,
+            allowEdit: true,
             targetWidth: 512,
             targetHeight: 512
         });
