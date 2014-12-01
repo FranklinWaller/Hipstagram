@@ -127,7 +127,19 @@ var hipsta = {
                     var imageCount = localStorage.getItem('imageCount');
                     //image.src = "data:image/jpeg;base64," + imageURI;
                     localStorage.setItem('image' + imageCount, imageURI);
-                    alert('Done');
+
+
+                    window.canvas2ImagePlugin.saveImageDataToLibrary(
+                        function(msg){
+                            alert('Done');
+                        },
+                        function(err){
+                            alert('Woops. Something went terribry wrong.');
+                        },
+                        canvas
+                    );
+
+                    
                     //window.open(myImage);
                 }
             });

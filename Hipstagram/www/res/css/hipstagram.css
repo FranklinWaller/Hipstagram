@@ -35,12 +35,16 @@ body {
 		overflow-x:scroll;
 		white-space: nowrap;
 	}
+
 		.sub-menu .subs a {
 			padding-left:15px;
 		}
+		
 			.sub-menu .subs a img {
 				height:30px;
 			}
+
+
 .subs-slider {
 	list-style-type:none;
 	text-align:center;
